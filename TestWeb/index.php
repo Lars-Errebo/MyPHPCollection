@@ -11,7 +11,7 @@ define('myname','Lars Errebo');
 <link rel="stylesheet" type="text/css" href="theme.css">
 </head>
 <body>
-<h1>Dette er titlen</h1>
+<h1>Dette er titlen på siden/h1>
 <?php
 $a = 4;
 $b = 6;
