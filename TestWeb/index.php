@@ -4,6 +4,11 @@ include_once('extendclass.php');
 $m  = new MyFirstClass;
 $m1 = new MyExtendClass;
 define('myname','Lars Errebo');
+
+function U8($t) {
+	return utf8_decode($t);
+}
+
 ?>
 <html>
 <head>
@@ -11,8 +16,26 @@ define('myname','Lars Errebo');
 <link rel="stylesheet" type="text/css" href="theme.css">
 </head>
 <body>
-<h1>Dette er titlen på siden</h1>
+<h1>
+<?php echo "<h1>".U8("Dette min er titlen på ÆØÅ æøå iden")."</h1>"; ?>
+
+<h1>Dette er en test af ÆØÅæøå</h1>
 <?php
+session_start();
+$_SESSION['productcheck'] = array();
+$_SESSION['productcheck'][] = 'A';
+$_SESSION['productcheck'][] = 'B';
+$_SESSION['productcheck'][] = 'C';
+session_write_close(); // optional
+?>
+<html>
+  <head><title>session test</title></head>
+  <body>
+    <div>session test</div>
+    <iframe src="test2.php" />
+  </body>
+</html>
+<?php 
 $a = 4;
 $b = 6;
 echo "Totalen er: ".($a+$b);
@@ -28,6 +51,12 @@ echo "Name: ".$name;
 if (isset($_POST['name'])) {
    echo $_POST['name'];
 } 
+
+$datetime1 = new DateTime('2014-03-01');
+$datetime2 = new DateTime('2014-03-31');
+$interval = $datetime1->diff($datetime2);
+echo $interval->format('%a');
+
 ?>
 <table border=3>
 <tr>
